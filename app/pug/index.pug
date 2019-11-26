@@ -1,0 +1,29 @@
+include includes/templates/mixins
+doctype
+html(lang="en")
+
+  head
+    meta(charset="utf-8")
+    title Main page
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    include includes/parts/favicons
+
+  body
+    //Header bgn
+    include includes/parts/header
+    //Header end
+
+    //Main bgn
+    main.main
+      h2 Main part
+
+      +icon('icon_fb','top__fb')
+
+    //Main end
+
+    //Footer bgn
+    include includes/parts/footer
+    //Footer end
+    include includes/parts/styles
+    include includes/parts/scripts

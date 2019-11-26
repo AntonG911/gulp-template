@@ -1,0 +1,122 @@
+//Fonts and text
+=font-roboto-reg
+  font-family: 'Roboto Condensed', sans-serif
+  font-weight: 400
+  font-style: normal
+
+=font-roboto-bold
+  font-family: 'Roboto Condensed', sans-serif
+  font-weight: 700
+  font-style: normal
+
+//css lock
+// $min-size: minimum element $property size in $unit specified
+// $max-size: maximum element $property size in $unit specified
+// $min-width: the screen width in $units where you want to lock in the $min-size
+// $max-width: the screen width in $units where you want to lock in the $max-size
+// $property: the property of the element that you would like to scale/lock
+// $unit: the units which all measurements are taken in
+
+@mixin css-lock($min-size, $max-size, $min-width, $max-width, $property, $unit)
+  #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})))
+
+  @media (max-width: #{$min-width}#{$unit})
+    #{$property}: #{$min-size}#{$unit}
+  
+  @media (min-width: #{$max-width}#{$unit})
+    #{$property}: #{$max-size}#{$unit}
+
+//Media queries
+//width
+=r($width)
+  @media only screen and (max-width: $width+ "px")
+    @content
+
+=m($width)
+  @media only screen and (min-width: $width+ "px")
+    @content
+
+//height
+=rh($height)
+  @media only screen and (max-height: $height + "px")
+    @content
+
+=mh($height)
+  @media only screen and (min-height: $height + "px")
+    @content
+
+//width min-max
+=mmw($width-min, $width-max)
+  @media only screen and (min-width: $width-min + "px") and (max-width: $width-max + "px")
+    @content
+
+//height min-max
+=mmh($height-min, $height-max)
+  @media only screen and (min-height: $height-min + "px") and (max-height: $height-max + "px")
+    @content
+
+//retina
+=retina
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+    @content
+
+//iPhoneX landscape
+=iphonexland
+  @media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape)
+    @content
+
+//iPhone landscape
+=iphoneland
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape)
+    @content
+
+//iPad Pro portrait
+=ipadproport
+  @media only screen and (min-device-width : 1024px) and (max-device-width : 1366px)  and (orientation : portrait)
+    @content
+
+//Transition
+=transition
+  transition: all 0.3s ease-out
+
+//Reset links
+=link-reset
+  display: inline-block
+  position: relative
+  color: inherit
+  text-decoration: none
+
+//vertical-align at center
+=vcenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+
+//clearfix
+=clr
+  &:after
+    content: " "
+    display: table
+    clear: both
+
+//font size
+=fs($sizeValue: 16)
+  font-size: $sizeValue + px
+  font-size: $sizeValue / 10 + rem
+
+=smooth-font
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+//Images
+=img
+  display: block
+  width: 100%
+  height: auto
+
+//performance
+=gpu
+  transform: translate3d(0,0,0)
+
+

@@ -1,0 +1,29 @@
+.body-overflow
+  overflow: hidden
+  
+.wrapper
+  width: calc(100% - 6rem)
+  margin: 0 auto
+  +r(767)
+    width: calc(100% - 3rem)
+
+.section
+  padding-top: 8rem
+  +r(767)
+    padding-top: 8rem
+  +m(1600)
+    padding-top: 10rem
+
+//Form
+.form
+  &__label
+    +transition
+
+.form__input-box.focused
+  .form__label
+    transform: translateY(-125%)
+
+
+
+
+
