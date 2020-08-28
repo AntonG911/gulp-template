@@ -145,8 +145,8 @@ gulp.task('browser-sync', function() {
 
 // Watch task
 gulp.task('watch', function() {
-	// gulp.watch(path+'html/**/*.html', gulp.series('html'));
-	gulp.watch(path+'pug/**/*.*', gulp.series('pug'));
+	gulp.watch(path+'html/**/*.html', gulp.series('html'));
+	// gulp.watch(path+'pug/**/*.*', gulp.series('pug'));
 	gulp.watch(path+'sass/**/*.sass', gulp.series('sass'));
 	gulp.watch([path+'js/common.js', path+'js/libs/*.*'], gulp.series('js'));
 	gulp.watch(path+'img/svg-sprite/*.svg', gulp.series('svg-sprite-build'));
@@ -154,7 +154,7 @@ gulp.task('watch', function() {
 });
 
 // Compile all files before copy to build dir
-gulp.task('build:compile', gulp.series('pug', 'sass', 'js', 'svg-sprite-build')); //Add 'html' in the begining for using html
+gulp.task('build:compile', gulp.series('html', 'sass', 'js', 'svg-sprite-build')); //Add 'html' in the begining for using html
 
 // Build tasks
 gulp.task('build:clean', (done) => {
@@ -203,4 +203,4 @@ gulp.task('build:img', function() {
 gulp.task('build', gulp.series('build:clean', 'build:compile', 'build:html', 'build:css', 'build:js', 'build:fonts', 'build:img'));
 
 // Default task
-gulp.task('default', gulp.series('pug', 'sass', 'js', 'svg-sprite-build', gulp.parallel('browser-sync', 'watch'))); //Add 'html' in the begining for using html
+gulp.task('default', gulp.series('html', 'sass', 'js', 'svg-sprite-build', gulp.parallel('browser-sync', 'watch'))); //Add 'html' in the begining for using html
